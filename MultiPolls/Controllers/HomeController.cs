@@ -26,5 +26,7 @@ namespace MultiPolls.Controllers
 
             return View();
         }
+
     }
+
 }
