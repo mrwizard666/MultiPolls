@@ -1,0 +1,143 @@
+﻿@model MultiPolls.Models.Poll
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<header>
+    <script src="@Url.Content("/Scripts/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("/Scripts/create.poll.jquery.js")"></script>
+</header>
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Create your poll</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PollQuestion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PollQuestion)
+                @Html.ValidationMessageFor(model => model.PollQuestion)
+            </div>
+        </div>
+
+        <div id="editA" class="form-group">
+            @Html.LabelFor(model => model.OptionA, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionA)
+                @Html.ValidationMessageFor(model => model.OptionA)
+            </div>
+        </div>
+
+        <div  class="form-group">
+            @Html.LabelFor(model => model.OptionB, new { @class = "control-label col-md-2" })
+            <div id="option2"class="col-md-10">
+                @Html.EditorFor(model => model.OptionB)
+                @Html.ValidationMessageFor(model => model.OptionB)
+            </div>
+        </div>
+
+        <div id="Option3" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionC, new { @class = "control-label col-md-2" })
+                <div id="option3" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionC)
+                    @Html.ValidationMessageFor(model => model.OptionC)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option4" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionD, new { @class = "control-label col-md-2" })
+                <div id="option4" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionD)
+                    @Html.ValidationMessageFor(model => model.OptionD)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option5" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionE, new { @class = "control-label col-md-2" })
+                <div id="option5" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionE)
+                    @Html.ValidationMessageFor(model => model.OptionE)
+                </div>
+            </div>
+        </div>
+        
+        <div id="Option6" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionF, new { @class = "control-label col-md-2" })
+                <div id="option6" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionF)
+                    @Html.ValidationMessageFor(model => model.OptionF)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option7" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionG, new { @class = "control-label col-md-2" })
+                <div id="option7" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionG)
+                    @Html.ValidationMessageFor(model => model.OptionG)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option8" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionH, new { @class = "control-label col-md-2" })
+                <div id="option8" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionH)
+                    @Html.ValidationMessageFor(model => model.OptionH)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option9" class="make-invisible">
+            <div id="option9" class="form-group">
+                @Html.LabelFor(model => model.OptionI, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OptionI)
+                    @Html.ValidationMessageFor(model => model.OptionI)
+                </div>
+            </div>
+        </div>
+
+        <div id="Option10" class="make-invisible">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OptionJ, new { @class = "control-label col-md-2" })
+                <div id="option10" class="col-md-10">
+                    @Html.EditorFor(model => model.OptionJ)
+                    @Html.ValidationMessageFor(model => model.OptionJ)
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

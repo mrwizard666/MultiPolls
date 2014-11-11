@@ -1,0 +1,146 @@
+﻿@model MultiPolls.Models.Poll
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Poll</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreationDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreationDate)
+                @Html.ValidationMessageFor(model => model.CreationDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EditDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EditDate)
+                @Html.ValidationMessageFor(model => model.EditDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatorID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreatorID)
+                @Html.ValidationMessageFor(model => model.CreatorID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PollQuestion, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PollQuestion)
+                @Html.ValidationMessageFor(model => model.PollQuestion)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionA, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionA)
+                @Html.ValidationMessageFor(model => model.OptionA)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionB, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionB)
+                @Html.ValidationMessageFor(model => model.OptionB)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionC, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionC)
+                @Html.ValidationMessageFor(model => model.OptionC)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionD, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionD)
+                @Html.ValidationMessageFor(model => model.OptionD)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionE, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionE)
+                @Html.ValidationMessageFor(model => model.OptionE)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionF, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionF)
+                @Html.ValidationMessageFor(model => model.OptionF)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionG, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionG)
+                @Html.ValidationMessageFor(model => model.OptionG)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionH, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionH)
+                @Html.ValidationMessageFor(model => model.OptionH)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionI, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionI)
+                @Html.ValidationMessageFor(model => model.OptionI)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionJ, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OptionJ)
+                @Html.ValidationMessageFor(model => model.OptionJ)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

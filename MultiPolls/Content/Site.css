@@ -80,3 +80,6 @@ input[type="checkbox"].input-validation-error {
     padding-right: 40px;
     padding-left: 40px;
 }
+.hide-items{
+    visibility: hidden;
+}
