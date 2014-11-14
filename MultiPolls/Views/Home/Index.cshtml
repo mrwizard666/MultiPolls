@@ -2,10 +2,32 @@
     ViewBag.Title = "Home";
 }
 
-<body class="index-background">
+ <header class="login-dropdown-box">
+    <ul class="ul-properties">
+        <li id="login" class="login-list">
+            <a id="login-trigger" href="#">
+                Log in <span>▼</span>
+            </a>
+            <div id="login-content">
+                <form>
+                    <fieldset id="inputs">
+                        <input id="username" type="email" name="Email" placeholder="Your email address" required>
+                        <input id="password" type="password" name="Password" placeholder="Password" required>
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="submit" value="Log in">
+                        <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                    </fieldset>
+                </form>
+            </div>
+        </li>
+        <li id="signup" class="login-list">
+            <a href="">Sign up FREE</a>
+        </li>
+    </ul>
+</header>
+
     <div class="pie-home">
         @Html.Image("~/Resources/Pie.png", "This is alt text")
     </div>
-</body>
-
 

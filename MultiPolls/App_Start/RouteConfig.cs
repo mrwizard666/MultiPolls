@@ -14,7 +14,7 @@ namespace MultiPolls
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "OnlyAction",
+                name: "OnlyIndexAction",
                 url: "{action}",
                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
              );

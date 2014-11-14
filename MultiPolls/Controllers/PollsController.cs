@@ -50,11 +50,12 @@ namespace MultiPolls.Controllers
         {
             if (ModelState.IsValid)
             {
+                poll.CreationDate = DateTime.Now;
+                poll.EditDate = DateTime.Now;
                 db.Polls.Add(poll);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PrivatePolls");
             }
-
             return View(poll);
         }
 
@@ -84,7 +85,7 @@ namespace MultiPolls.Controllers
             {
                 db.Entry(poll).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PrivatePolls");
             }
             return View(poll);
         }
@@ -112,7 +113,7 @@ namespace MultiPolls.Controllers
             Poll poll = db.Polls.Find(id);
             db.Polls.Remove(poll);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("PrivatePolls");
         }
 
         protected override void Dispose(bool disposing)
