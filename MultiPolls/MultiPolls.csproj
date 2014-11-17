@@ -165,6 +165,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411111846298_InitialCreate.cs" />
+    <Compile Include="Migrations\201411111846298_InitialCreate.Designer.cs">
+      <DependentUpon>201411111846298_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411171209505_AddPollUrl.cs" />
+    <Compile Include="Migrations\201411171209505_AddPollUrl.Designer.cs">
+      <DependentUpon>201411171209505_AddPollUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Poll.cs" />
@@ -230,6 +239,7 @@
     <Content Include="Views\Polls\Details.cshtml" />
     <Content Include="Views\Polls\Edit.cshtml" />
     <Content Include="Views\Polls\Index.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -240,6 +250,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201411111846298_InitialCreate.resx">
+      <DependentUpon>201411111846298_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411171209505_AddPollUrl.resx">
+      <DependentUpon>201411171209505_AddPollUrl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

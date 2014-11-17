@@ -16,7 +16,7 @@ namespace MultiPolls.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MainDbContext())))
         {
         }
 
@@ -41,7 +41,7 @@ namespace MultiPolls.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl = "/Home/LoginHome")
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace MultiPolls.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("LoginHome", "Home");
                 }
                 else
                 {

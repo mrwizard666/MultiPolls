@@ -1,0 +1,105 @@
+﻿@model MultiPolls.Models.RegisterViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {*@
+<header class="login-dropdown-box">
+    <ul class="ul-properties">
+        <li id="login" class="login-list">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <a id="login-trigger" href="#">
+                    Log in <span>▼</span>
+                </a>
+                <div id="login-content">
+                    <form>
+                        <fieldset id="inputs">
+                            @Html.ValidationSummary()
+                            @*<input id="username" type="email" name="Email" placeholder="Your email address" required>*@
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @*<input id="password" type="password" name="Password" placeholder="Password" required>*@
+                            @Html.TextBoxFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" value="Log in">
+                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                    </form>
+                </div>
+            }
+        </li>
+        <li id="signup" class="login-list">
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <a id="signup-trigger" href="#">
+                    Sign up <span>▼</span>
+                </a>
+                <div id="signup-content">
+                    <form>
+                        <fieldset id="signup-inputs">
+                            @Html.ValidationSummary()
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            @*<input id="confirm-password" type="password" name="Password" placeholder="Confirm Password" required>*@
+                        </fieldset>
+                        <fieldset id="s-actions">
+                            <input type="submit" id="s-submit" value="Sign Me Up">
+                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                    </form>
+                </div>
+            }
+        </li>
+    </ul>
+</header>
+
+
+<div class="pie-home">
+    @Html.Image("~/Resources/Pie.png", "This is alt text")
+</div>
+
+
+
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary()
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+    }*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

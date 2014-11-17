@@ -32,7 +32,7 @@ namespace MultiPolls.Models
         public int AnswerJ { get; set; }
     }
 
-    public class PollDBContext : ApplicationDbContext
+    public class PollDBContext : MainDbContext
     {
         public DbSet<Poll> Polls { get; set; }
     }

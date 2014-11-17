@@ -7,9 +7,9 @@ namespace MultiPolls.Models
     {
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class MainDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public MainDbContext()
             : base("DefaultConnection")
         {
         }

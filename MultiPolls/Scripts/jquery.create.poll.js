@@ -10,7 +10,7 @@ $(document).ready(function () {
         if ("option" + x === this.id && x !== 10) {
             $("#Option" + y).show();
             x++;
-            y++
+            y++;
         };
     });
 });
