@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MultiPolls.Models.Poll>
+
+@{
+    ViewBag.Title = "Published Polls";
+}
+
+<div>
+aa
+</div>
+<div>
+aa
+</div>
+<div>
+    aa
+</div>
+<div>
+    aa
+</div>
+
+<p>
+    @Html.ActionLink("My Published Polls", "Create")
+</p>
+<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PollQuestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PollQuestion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatorID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditDate)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Vote", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Results", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>

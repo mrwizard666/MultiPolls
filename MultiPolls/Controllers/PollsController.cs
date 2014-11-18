@@ -124,5 +124,26 @@ namespace MultiPolls.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: /Polls/PublishedPolls
+        public ActionResult PublishedPolls()
+        {
+            return View(db.Polls.ToList());
+        }
+
+        // GET: /Polls/Vote
+        public ActionResult Vote(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Poll poll = db.Polls.Find(id);
+            if (poll == null)
+            {
+                return HttpNotFound();
+            }
+            return View(poll);
+        }
     }
 }

@@ -240,6 +240,8 @@
     <Content Include="Views\Polls\Edit.cshtml" />
     <Content Include="Views\Polls\Index.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Polls\PublishedPolls.cshtml" />
+    <Content Include="Views\Polls\Vote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

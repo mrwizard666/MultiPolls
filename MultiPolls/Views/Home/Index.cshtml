@@ -1,4 +1,4 @@
-﻿@model MultiPolls.Models.RegisterViewModel
+﻿﻿@model MultiPolls.Models.RegisterViewModel
 
 @{
     ViewBag.Title = "Home";
@@ -9,55 +9,55 @@
 <header class="login-dropdown-box">
     <ul class="ul-properties">
         <li id="login" class="login-list">
-           @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
-            @Html.AntiForgeryToken()
-             <a id="login-trigger" href="#">
-                Log in <span>▼</span>
-            </a>
-            <div id="login-content">
-                <form>
-                    <fieldset id="inputs">
-                        @Html.ValidationSummary()
-                        @*<input id="username" type="email" name="Email" placeholder="Your email address" required>*@
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @*<input id="password" type="password" name="Password" placeholder="Password" required>*@
-                        @Html.TextBoxFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    </fieldset>
-                    <fieldset id="actions">
-                        <input type="submit" id="submit" value="Log in">
-                        <label><input type="checkbox" checked="checked"> Keep me signed in</label>
-                    </fieldset>
-                </form>
-            </div>
-           }
+                @Html.AntiForgeryToken()
+                <a id="login-trigger" href="#">
+                    Log in <span>▼</span>
+                </a>
+                <div id="login-content">
+                    <form>
+                        <fieldset id="inputs">
+                            @Html.ValidationSummary()
+                            @*<input id="username" type="email" name="Email" placeholder="Your email address" required>*@
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @*<input id="password" type="password" name="Password" placeholder="Password" required>*@
+                            @Html.TextBoxFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" value="Log in">
+                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                    </form>
+                </div>
+            }
         </li>
         <li id="signup" class="login-list">
-            
+
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
+            {
                 @Html.AntiForgeryToken()
-            <a id="signup-trigger" href="#">
-                Sign up <span>▼</span>
-            </a>
-            <div id="signup-content">
-                <form>
-                    <fieldset id="signup-inputs">
-                        @Html.ValidationSummary()
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                        @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        @*<input id="confirm-password" type="password" name="Password" placeholder="Confirm Password" required>*@
-                    </fieldset>
-                    <fieldset id="s-actions">
-                        <input type="submit" id="s-submit" value="Sign Me Up">
-                        <label><input type="checkbox" checked="checked"> Keep me signed in</label>
-                    </fieldset>
-                </form>
-            </div>
-             } 
+                <a id="signup-trigger" href="#">
+                    Sign up <span>▼</span>
+                </a>
+                <div id="signup-content">
+                    <form>
+                        <fieldset id="signup-inputs">
+                            @Html.ValidationSummary()
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            @*<input id="confirm-password" type="password" name="Password" placeholder="Confirm Password" required>*@
+                        </fieldset>
+                        <fieldset id="s-actions">
+                            <input type="submit" id="s-submit" value="Sign Me Up">
+                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
+                        </fieldset>
+                    </form>
+                </div>
+            }
         </li>
     </ul>
 </header>
