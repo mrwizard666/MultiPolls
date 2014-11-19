@@ -75,23 +75,61 @@ input[type="checkbox"].input-validation-error {
     position: fixed;
     top: 250px;
 }
+
+.image-as-link-1, .image-as-link-2, .image-as-link-3{
+     display: inline-block;
+     width: 350px;
+     height: 100px;
+     position: absolute;
+     top: 100px;
+     left: 30px;
+     text-indent: -9999px; 
+}
+
+.image-as-link-1 {
+    background: url(/Resources/CreatePoll.png) no-repeat top left;
+     position: absolute;
+     top: 200px;
+     left: 30px;
+}
+
+.image-as-link-2 {
+    background: url(/Resources/MyPolls.png) no-repeat top left;
+    position: absolute;
+    top: 200px;
+    left: 430px;
+}
+
+.image-as-link-3 {
+    background: url(/Resources/PublicPolls.png) no-repeat top left;
+    position: absolute;
+    top: 200px;
+    left: 830px;
+}
+
+
 .image-padding-hor{
     padding-right: 40px;
     padding-left: 40px;
 }
 
-.login-dropdown-box{
+.login-drop-box{
     position: fixed;
     top: 10px;
     right: 15px;
 }
 
-
+.hide-this{
+    display: none;
+}
 
 /*-------------------*/
 
 .login-list{
-    display: inline;
+    display: inline-block;
+    /*float:left;
+    height:30px;*/
+    /*margin:0 10px 10px 0;*/
 }
 
 .ul-properties{

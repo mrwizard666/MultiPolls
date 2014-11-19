@@ -1,7 +1,4 @@
-﻿$(function () {
-    $(".make-invisible").hide();
-});
-
+﻿
 $(document).ready(function () {
     var x = 2;
     var y = 3;

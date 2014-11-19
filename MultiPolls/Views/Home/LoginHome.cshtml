@@ -2,11 +2,11 @@
     ViewBag.Title = "My Home";
 }
 
-    <div class="align-images index-background">
-        @Html.Image("~/Resources/CreatePoll.png", "This is alt text")
-        <span class="image-padding-hor">
-            @Html.Image("~/Resources/MyPolls.png", "This is alt text")
-        </span>
-        @Html.Image("~/Resources/PublicPolls.png", "This is alt text")
-    </div>
+<div class="image-as-links">
+    @Html.ActionLink("CreateButton", "Create", "Polls", null, new { @class = "image-as-link-1" })
+
+    @Html.ActionLink("MyPollsButton", "Index", "Polls", null, new { @class = "image-as-link-2" })
+
+    @Html.ActionLink("PublicPollsButton", "Index", "Polls", null, new { @class = "image-as-link-3" })
+</div>
 

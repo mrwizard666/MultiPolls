@@ -17,30 +17,51 @@
     aa
 </div>
 
-<p>
-    @Html.ActionLink("Vote", "Create")
-</p>
 
+
+@*using (Html.BeginForm())
+{
+    foreach (var item ML in Model.MobileList)
+    {
+    <div>@Html.RadioButtonFor(m => m.SelectedAnswer, ML.MobileID )
+    @Html.Label(ML.MobileName)
+    *@
+
+@using (Html.BeginForm("Vote", "Polls", @*new { ReturnUrl = ViewBag.ReturnUrl },*@ FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
 <div>
     @Html.DisplayFor(model => model.PollQuestion)
     <ul class="ul-properties">@*  *@
         <li>
-            @Html.RadioButtonFor(model => model.OptionA, 1, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionA) 
+            @Html.RadioButtonFor(model => model.OptionA, "A", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionA) 
         <li>
-            @Html.RadioButtonFor(model => model.OptionB, 1, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionB) @Html.DisplayFor(model => model.OptionB)
+            @Html.RadioButtonFor(model => model.OptionB, "B", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionB)
 
         </li>
         <li>
-            @Html.RadioButtonFor(model => model.OptionC, 1, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC) @Html.DisplayFor(model => model.OptionC)
-
+            @Html.RadioButtonFor(model => model.OptionC, 3, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC) 
         </li>
         <li>
-            @Html.RadioButtonFor(model => model.OptionD, 1, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD) @Html.DisplayFor(model => model.OptionD)
+            @Html.RadioButtonFor(model => model.OptionD, 4, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD)
 
         </li>
     </ul>
+    <input type="submit" id="vote-submit" value="Vote">
+</div>
+}
+
+<div>
+    .
+    .
 </div>
 
-<p>
-    @Html.ActionLink("Vote", "Create")
-</p>
+<ul class="ul-properties">
+    <li>
+        @Html.ActionLink("Vote", "Create")
+    </li>
+
+    <li>
+        @Html.ActionLink("Results", "Create")
+    </li>
+</ul>

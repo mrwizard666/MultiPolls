@@ -55,8 +55,8 @@ aa
                 </td>
 
                 <td>
-                    @Html.ActionLink("Vote", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Results", "Delete", new { id = item.ID })
+                    @Html.ActionLink("Vote", "Vote", new { id = item.ID }) |
+                    @Html.ActionLink("Results", "PollResults", new { id = item.ID })
                 </td>
             </tr>
         }
