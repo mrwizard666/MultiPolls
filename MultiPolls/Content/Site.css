@@ -1,4 +1,29 @@
-﻿body {
+﻿/*body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+   background:#ff0;
+   padding:10px;
+}
+#body {
+   padding:10px;
+   padding-bottom:60px;   /* Height of the footer */
+
+#footer {
+   background-color: #F5F5F5;
+   bottom: 0;
+   height: 60px;
+   position: relative;
+  width: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -41,12 +66,12 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-.copyright {
+/*.copyright {
     color: yellow;
     position: absolute;
     bottom: 5px;
     left: 10px;
-}
+}*/
 
 .pie-home { 
     position: fixed;
@@ -55,7 +80,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .index-background {
-   background-color: blueviolet;  
+   background-color: white;  
 }
 
 .logo-background{

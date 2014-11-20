@@ -6,29 +6,44 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MultiPolls - @ViewBag.Title</title>
+    
     <script src="@Url.Content("/Scripts/jquery-1.10.2.min.js")"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     
+    
     <script src="@Url.Content("/Scripts/jquery.create.poll.js")"></script>
     <script src="@Url.Content("/Scripts/jquery.login.form.js")"></script>
     <script src="@Url.Content("/Scripts/Highcharts-4.0.1/js/highcharts.js")"></script>
+   
+    
     @*<script src="@Url.Content("/Scripts/jquery.results.plot.js")"></script>*@
 
 
 </head>
 
-<body class="index-background">
-    <header>
-        <div class="logo-background">
-            @Html.Image("~/Resources/LogoHeader.png", "This is alt text")
-        </div>
-    </header>
-    <div class="container body-content">
-        @RenderBody()
-        <div class="copyright">&copy; @DateTime.Now.Year - MrWizardApps</div>
-    </div>
 
+<body class="index-background">
+    <div id="container">
+        <div id="header">
+            <header>
+                <div class="logo-background">
+                    @*@Html.Image("~/Resources/LogoHeader.png", "This is alt text")*@
+                </div>
+            </header>
+        </div>
+        <div id="body">
+            <div class="container body-content">
+                @RenderBody()
+            </div>
+            @*</div>
+            <div id="footer" class="navbar-default">
+                <div class="container">
+                    <p>&copy; @DateTime.Now.Year - MrWizardApps</p>
+
+                </div>*@
+        </div>
+    </div>
 </body>
 
 
