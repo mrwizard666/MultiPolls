@@ -5,90 +5,28 @@
 }
 
 
-
-@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {*@
-<header>
-    
-    <ul class="ul-properties login-drop-box">
-        <li id="login" class="login-list">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new
-            { @*@class = "form-horizontal",*@ role = "form"
-            }))
-            {
-                @Html.AntiForgeryToken()
-                <a id="login-trigger" href="#">
-                    Log in <span>▼</span>
-                </a>
-                <div id="login-content">
-                    <form>
-                        <fieldset id="inputs">
-                            @Html.ValidationSummary()
-                            @*<input id="username" type="email" name="Email" placeholder="Your email address" required>*@
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                            @*<input id="password" type="password" name="Password" placeholder="Password" required>*@
-                            @Html.TextBoxFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        </fieldset>
-                        <fieldset id="actions">
-                            <input type="submit" id="submit" value="Log in">
-                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
-                        </fieldset>
-                    </form>
-                </div>
-            }
-        </li>
-        <li id="signup" class="login-list">
-
-            @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new
-            { @*@class = "form-horizontal",*@ role = "form"
-            }))
-            {
-                @Html.AntiForgeryToken()
-                <a id="signup-trigger" href="#">
-                    Sign up <span>▼</span>
-                </a>
-                <div id="signup-content">
-                    <form>
-                        <fieldset id="signup-inputs">
-                            @Html.ValidationSummary()
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                            @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                            @*<input id="confirm-password" type="password" name="Password" placeholder="Confirm Password" required>*@
-                        </fieldset>
-                        <fieldset id="s-actions">
-                            <input type="submit" id="s-submit" value="Sign Me Up">
-                            <label><input type="checkbox" checked="checked"> Keep me signed in</label>
-                        </fieldset>
-                    </form>
-                </div>
-            }
-        </li>
-    </ul>
-</header>
-
-<div id="impress">
-    @*<div class="pie-home">*@
-    <div class="step" data-x="0" data-y="0">
-        My first slide
-        @*  @Html.Image("~/Resources/Pie.png", "This is alt text")*@
-    </div>
-    <div class="step" data-x="500" data-y="0">
-        This is slide 2
-    </div>
-    <div class="step" data-x="500" data-y="-200">
-        This is slide 3
-    </div>
-    <div class="step" data-x="500" data-y="-400" data-scale="0.5">
-        This is slide 4
-    </div>
-    <div class="step" data-x="0" data-y="-400" data-rotate="90">
-        This is slide 5 and it rotates in.
-    </div>
-    <div class="step" data-x="-600" data-y="-300" data-rotate-x="30" data-rotate-y="-60" data-rotate-z="90" data-scale="4">
-        This is slide 7 and it has a 3D transition AND a scale.
+<div id="login-form-vanish">
+    <div id="impress" class="impress-text-color">
+        @*<div class="pie-home">*@
+        <div class="step" data-x="0" data-y="0">
+            My first slide
+            @Html.Image("~/Resources/Pie.png", "This is alt text")
+        </div>
+        <div class="step" data-x="500" data-y="0">
+            This is slide 2
+        </div>
+        <div class="step" data-x="500" data-y="-200">
+            This is slide 3
+        </div>
+        <div class="step" data-x="500" data-y="-400" data-scale="0.5">
+            This is slide 4
+        </div>
+        <div class="step" data-x="0" data-y="-400" data-rotate="90">
+            This is slide 5 and it rotates in.
+        </div>
+        <div class="step" data-x="-600" data-y="-300" data-rotate-x="30" data-rotate-y="-60" data-rotate-z="90" data-scale="4">
+            This is slide 7 and it has a 3D transition AND a scale.
+        </div>
     </div>
 </div>
 

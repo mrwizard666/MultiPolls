@@ -41,7 +41,7 @@ namespace MultiPolls.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl = "/Home/LoginHome")
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl = "/Home/Index")
         {
             if (ModelState.IsValid)
             {
