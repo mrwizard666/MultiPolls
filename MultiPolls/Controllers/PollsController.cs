@@ -40,6 +40,7 @@ namespace MultiPolls.Controllers
         }
 
         // GET: /Polls/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -159,11 +160,76 @@ namespace MultiPolls.Controllers
         {
             if (ModelState.IsValid)
             {
-                //if 
-                if (Option == "B")
+                //for (char c1 = 'A'; c1 <= 'J'; c1++)
+                //{
+
+                if (Option == "A")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerA = poll.AnswerA + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "B")
                 {
                     poll = db.Polls.Find(id);
                     poll.AnswerB = poll.AnswerB + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "C")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerC = poll.AnswerC + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "D")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerD = poll.AnswerD + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "E")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerE = poll.AnswerE + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "F")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerF = poll.AnswerF + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "G")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerG = poll.AnswerG + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "H")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerH = poll.AnswerH + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "I")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerI = poll.AnswerI + 1;
+                    db.SaveChanges();
+                    return RedirectToAction("PollResults/" + id);
+                }
+                else if (Option == "J")
+                {
+                    poll = db.Polls.Find(id);
+                    poll.AnswerJ = poll.AnswerJ + 1;
                     db.SaveChanges();
                     return RedirectToAction("PollResults/" + id);
                 }

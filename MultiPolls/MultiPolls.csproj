@@ -197,6 +197,7 @@
     <Content Include="Resources\MyPolls.png" />
     <Content Include="Resources\Pie.png" />
     <Content Include="Resources\PublicPolls.png" />
+    <Content Include="Resources\Room.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -273,10 +274,10 @@
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\_Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginBarPartial.cshtml" />
     <Content Include="Views\Home\LoginHome.cshtml" />
     <Content Include="Views\Polls\Create.cshtml" />
     <Content Include="Views\Polls\Delete.cshtml" />
@@ -287,6 +288,8 @@
     <Content Include="Views\Polls\PublishedPolls.cshtml" />
     <Content Include="Views\Polls\Vote.cshtml" />
     <Content Include="Views\Polls\PollResults.cshtml" />
+    <Content Include="Views\Account\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\_RegisterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

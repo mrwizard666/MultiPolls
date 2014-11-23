@@ -4,20 +4,6 @@
     ViewBag.Title = "Vote";
 }
 
-<div>
-    aa
-</div>
-<div>
-    aa
-</div>
-<div>
-    aa
-</div>
-<div>
-    aa
-</div>
-
-
 
 @*using (Html.BeginForm())
 {
@@ -40,11 +26,28 @@
 
         </li>
         <li>
-            @Html.RadioButtonFor(model => model.OptionC, 3, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC) 
+            @Html.RadioButtonFor(model => model.OptionC, "C", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC) 
         </li>
         <li>
-            @Html.RadioButtonFor(model => model.OptionD, 4, new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD)
-
+            @Html.RadioButtonFor(model => model.OptionD, "D", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionE, "E", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionE)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionF, "F", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionF)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionG, "G", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionG)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionH, "H", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionH)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionI, "I", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionI)
+        </li>
+        <li>
+            @Html.RadioButtonFor(model => model.OptionJ, "J", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionJ)
         </li>
     </ul>
     <input type="submit" id="vote-submit" value="Vote">

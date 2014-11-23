@@ -30,7 +30,7 @@ namespace MultiPolls.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult _LoginPartial(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -41,7 +41,7 @@ namespace MultiPolls.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl = "/Home/Index")
+        public async Task<ActionResult> _LoginPartial(LoginViewModel model, string returnUrl = "/Home/Index")
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace MultiPolls.Controllers
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("LoginHome", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -199,7 +199,7 @@ namespace MultiPolls.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("_LoginPartial");
             }
 
             // Sign in the user with this external login provider if the user already has a login
