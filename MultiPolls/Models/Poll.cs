@@ -30,6 +30,7 @@ namespace MultiPolls.Models
         public int AnswerH { get; set; }
         public int AnswerI { get; set; }
         public int AnswerJ { get; set; }
+        
     }
 
     public class PollDBContext : MainDbContext

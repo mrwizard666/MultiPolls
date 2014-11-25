@@ -1,6 +1,6 @@
 ﻿@model MultiPolls.Models.RegisterViewModel
 
-@using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new
+@using (Html.BeginForm("_RegisterPartial", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new
             { @*@class = "form-horizontal",*@ role = "form"
             }))
 {
@@ -12,7 +12,9 @@
         <form>
             <fieldset id="signup-inputs">
                 @Html.ValidationSummary()
+               @* @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Name", @class = "form-control" })*@
                 @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Email", @class = "form-control" })
+                
                 @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
                 @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
                 @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@

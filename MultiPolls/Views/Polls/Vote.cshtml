@@ -5,14 +5,6 @@
 }
 
 
-@*using (Html.BeginForm())
-{
-    foreach (var item ML in Model.MobileList)
-    {
-    <div>@Html.RadioButtonFor(m => m.SelectedAnswer, ML.MobileID )
-    @Html.Label(ML.MobileName)
-    *@
-
 @using (Html.BeginForm("Vote", "Polls", @*new { ReturnUrl = ViewBag.ReturnUrl },*@ FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
@@ -54,17 +46,3 @@
 </div>
 }
 
-<div>
-    .
-    .
-</div>
-
-<ul class="ul-properties">
-    <li>
-        @Html.ActionLink("Vote", "Create")
-    </li>
-
-    <li>
-        @Html.ActionLink("Results", "Create")
-    </li>
-</ul>

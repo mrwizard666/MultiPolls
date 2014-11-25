@@ -4,10 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal jumbotron jumbot">
         <h4>Create your poll</h4>
         <hr />
@@ -20,14 +20,16 @@
                 @Html.ValidationMessageFor(model => model.PollQuestion)
             </div>
         </div>
-        <div id="editA" class="form-group">
+
+
+        <div id="optionA" class="form-group">
             @Html.LabelFor(model => model.OptionA, new { @class = "control-label col-md-2" })
             <div class="left-pad col-md-10">
                 @Html.EditorFor(model => model.OptionA)
                 @Html.ValidationMessageFor(model => model.OptionA)
             </div>
         </div>
-        <div  class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.OptionB, new { @class = "control-label col-md-2" })
             <div id="option2" class="left-pad col-md-10">
                 @Html.EditorFor(model => model.OptionB)
@@ -112,25 +114,22 @@
                 </div>
             </div>
         </div>
-            <div class="form-group">
-                <div class="left-pad2 col-md-offset-2 col-md-4">
-                    <div class="classWithPad">
-                        <a href="/Polls/Index" class="push_button">
-                            Create
-                        </a>
-                    </div>
+        <div class="form-group">
+            <div class="left-pad2 col-md-offset-2 col-md-4">
+                <div class="classWithPad">
+                    <input type="submit" value="Create" class="push_button" />
                 </div>
-                <div class="left-pad3 col-md-offset-2 col-md-4">
-                    <div class="classWithPad">
-                        <a href="/Home/Index" class="push_button">
-                            Cancel
-                        </a>
-                    </div>
+            </div>
+            <div class="left-pad3 col-md-offset-2 col-md-4">
+                <div class="classWithPad">
+                    <a href="/Home/Index" class="push_button">
+                        Cancel
+                    </a>
                 </div>
             </div>
         </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 }

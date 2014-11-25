@@ -176,6 +176,58 @@
     <Compile Include="Migrations\201411171209505_AddPollUrl.Designer.cs">
       <DependentUpon>201411171209505_AddPollUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411241208007_DropNameColumn.cs" />
+    <Compile Include="Migrations\201411241208007_DropNameColumn.Designer.cs">
+      <DependentUpon>201411241208007_DropNameColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241211053_AddNewNameColumn.cs" />
+    <Compile Include="Migrations\201411241211053_AddNewNameColumn.Designer.cs">
+      <DependentUpon>201411241211053_AddNewNameColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241300237_AddActualNameColumn.cs" />
+    <Compile Include="Migrations\201411241300237_AddActualNameColumn.Designer.cs">
+      <DependentUpon>201411241300237_AddActualNameColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241350455_dropcol.cs" />
+    <Compile Include="Migrations\201411241350455_dropcol.Designer.cs">
+      <DependentUpon>201411241350455_dropcol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241358264_AddRealName.cs" />
+    <Compile Include="Migrations\201411241358264_AddRealName.Designer.cs">
+      <DependentUpon>201411241358264_AddRealName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241414546_AddRealNameDecorations.cs" />
+    <Compile Include="Migrations\201411241414546_AddRealNameDecorations.Designer.cs">
+      <DependentUpon>201411241414546_AddRealNameDecorations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241419253_EditRealNameDec.cs" />
+    <Compile Include="Migrations\201411241419253_EditRealNameDec.Designer.cs">
+      <DependentUpon>201411241419253_EditRealNameDec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241439199_EditEmailDec.cs" />
+    <Compile Include="Migrations\201411241439199_EditEmailDec.Designer.cs">
+      <DependentUpon>201411241439199_EditEmailDec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241442187_EditEmailDecNew.cs" />
+    <Compile Include="Migrations\201411241442187_EditEmailDecNew.Designer.cs">
+      <DependentUpon>201411241442187_EditEmailDecNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241448099_SwitchEmailUser.cs" />
+    <Compile Include="Migrations\201411241448099_SwitchEmailUser.Designer.cs">
+      <DependentUpon>201411241448099_SwitchEmailUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411241453222_EditLoginName.cs" />
+    <Compile Include="Migrations\201411241453222_EditLoginName.Designer.cs">
+      <DependentUpon>201411241453222_EditLoginName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411242033391_any.cs" />
+    <Compile Include="Migrations\201411242033391_any.Designer.cs">
+      <DependentUpon>201411242033391_any.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411250658087_refresh.cs" />
+    <Compile Include="Migrations\201411250658087_refresh.Designer.cs">
+      <DependentUpon>201411250658087_refresh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -274,22 +326,19 @@
     <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\_Login.cshtml" />
     <Content Include="Views\Account\Manage.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginBarPartial.cshtml" />
-    <Content Include="Views\Home\LoginHome.cshtml" />
     <Content Include="Views\Polls\Create.cshtml" />
     <Content Include="Views\Polls\Delete.cshtml" />
     <Content Include="Views\Polls\Details.cshtml" />
     <Content Include="Views\Polls\Edit.cshtml" />
-    <Content Include="Views\Polls\Index.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
     <Content Include="Views\Polls\PublishedPolls.cshtml" />
     <Content Include="Views\Polls\Vote.cshtml" />
     <Content Include="Views\Polls\PollResults.cshtml" />
     <Content Include="Views\Account\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_RegisterPartial.cshtml" />
+    <Content Include="Views\Polls\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,6 +356,45 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411171209505_AddPollUrl.resx">
       <DependentUpon>201411171209505_AddPollUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241208007_DropNameColumn.resx">
+      <DependentUpon>201411241208007_DropNameColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241211053_AddNewNameColumn.resx">
+      <DependentUpon>201411241211053_AddNewNameColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241300237_AddActualNameColumn.resx">
+      <DependentUpon>201411241300237_AddActualNameColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241350455_dropcol.resx">
+      <DependentUpon>201411241350455_dropcol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241358264_AddRealName.resx">
+      <DependentUpon>201411241358264_AddRealName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241414546_AddRealNameDecorations.resx">
+      <DependentUpon>201411241414546_AddRealNameDecorations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241419253_EditRealNameDec.resx">
+      <DependentUpon>201411241419253_EditRealNameDec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241439199_EditEmailDec.resx">
+      <DependentUpon>201411241439199_EditEmailDec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241442187_EditEmailDecNew.resx">
+      <DependentUpon>201411241442187_EditEmailDecNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241448099_SwitchEmailUser.resx">
+      <DependentUpon>201411241448099_SwitchEmailUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241453222_EditLoginName.resx">
+      <DependentUpon>201411241453222_EditLoginName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411242033391_any.resx">
+      <DependentUpon>201411242033391_any.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411250658087_refresh.resx">
+      <DependentUpon>201411250658087_refresh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
