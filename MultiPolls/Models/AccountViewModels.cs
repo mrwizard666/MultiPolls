@@ -1,11 +1,12 @@
-﻿﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MultiPolls.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Username")]
+        //[EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserName { get; set; }
     }
 
@@ -31,7 +32,7 @@ namespace MultiPolls.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
@@ -46,7 +47,7 @@ namespace MultiPolls.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required]
@@ -59,6 +60,11 @@ namespace MultiPolls.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
     }
 
 

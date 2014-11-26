@@ -30,6 +30,9 @@ namespace MultiPolls.Models
         public int AnswerH { get; set; }
         public int AnswerI { get; set; }
         public int AnswerJ { get; set; }
+        public bool IsPublished { get; set; }
+        public bool IsPublic { get; set; }
+        public bool HasVoted { get; set; }
         
     }
 

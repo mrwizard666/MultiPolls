@@ -3,30 +3,32 @@
 @{
     ViewBag.Title = "Published Polls";
 }
->
 
-<p>
-    @Html.ActionLink("My Published Polls", "Create")
-</p>
+
+<h2>
+    My Published Polls
+</h2>
 <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PollQuestion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatorID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EditDate)
-            </th>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PollQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatorID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </th>
 
-            <th></th>
-        </tr>
+        <th></th>
+    </tr>
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        if (item.CreatorID == User.Identity.Name && item.IsPublished == true)
         {
             <tr>
                 <td>
@@ -43,10 +45,14 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Vote", "Vote", new { id = item.ID }) |
+                    @if (item.HasVoted == false)
+                    {
+                        @Html.ActionLink("Vote |", "Vote", new { id = item.ID })
+                    }
                     @Html.ActionLink("Results", "PollResults", new { id = item.ID })
                 </td>
             </tr>
         }
+    }
 
-    </table>
+</table>

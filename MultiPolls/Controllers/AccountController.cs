@@ -28,7 +28,7 @@ namespace MultiPolls.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         //
-        // GET: /Account/Login
+        // GET: /Account/_LoginPartial
         [AllowAnonymous]
         public ActionResult _LoginPartial(string returnUrl)
         {
@@ -37,7 +37,7 @@ namespace MultiPolls.Controllers
         }
 
         //
-        // POST: /Account/Login
+        // POST: /Account/_LoginPartial
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -46,6 +46,7 @@ namespace MultiPolls.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
+
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
@@ -74,11 +75,12 @@ namespace MultiPolls.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> _RegisterPartial(RegisterViewModel model)
+        public async Task<ActionResult> _RegisterPartial(RegisterViewModel model, string item)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.UserName };
+                user.Email = model.Email;
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -89,6 +91,7 @@ namespace MultiPolls.Controllers
                 {
                     AddErrors(result);
                 }
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -500,7 +503,7 @@ namespace MultiPolls.Controllers
 //        [ValidateAntiForgeryToken]
 //        public async Task<ActionResult> _RegisterPartial(RegisterViewModel model)
 //        {
-           
+
 //            if (ModelState.IsValid)
 //            {
 //                var email = new ApplicationUser() { Email = model.Email};

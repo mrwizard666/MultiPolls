@@ -8,8 +8,7 @@ namespace MultiPolls.Models
 
     public class ApplicationUser : IdentityUser
     {
-       
-        //public string Email { get; set; }
+        public override string Email { get; set; }
     }
 
     public class MainDbContext : IdentityDbContext<ApplicationUser>

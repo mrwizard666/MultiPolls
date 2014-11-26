@@ -13,8 +13,8 @@
             <fieldset id="signup-inputs">
                 @Html.ValidationSummary()
                @* @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Name", @class = "form-control" })*@
-                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Email", @class = "form-control" })
-                
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Username", @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "form-control" })
                 @*<input id="new-username" type="email" name="Email" placeholder="Your email address" required>*@
                 @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "form-control" })
                 @*<input id="new-password" type="password" name="Password" placeholder="Password" required>*@

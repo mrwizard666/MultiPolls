@@ -11,6 +11,7 @@ using DotNet.Highcharts.Options;
 using DotNet.Highcharts.Helpers;
 using System.Drawing;
 using DotNet.Highcharts.Enums;
+using Microsoft.AspNet.Identity;
 
 namespace MultiPolls.Controllers
 {
@@ -19,7 +20,7 @@ namespace MultiPolls.Controllers
         private PollDBContext db = new PollDBContext();
 
         // GET: /Polls/
-        public ActionResult Index()
+        public ActionResult MyPolls()
         {
             return View(db.Polls.ToList());
         }
@@ -51,15 +52,19 @@ namespace MultiPolls.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ")] Poll poll)
+        public ActionResult Create([Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ,IsPublished,IsPublic,HasVoted")] Poll poll)
         {
             if (ModelState.IsValid)
             {
+                poll.CreatorID = User.Identity.Name;
                 poll.CreationDate = DateTime.Now;
                 poll.EditDate = DateTime.Now;
+                poll.IsPublished = false;
+                poll.IsPublic = false;
+                poll.HasVoted = false;
                 db.Polls.Add(poll);
                 db.SaveChanges();
-                return RedirectToAction("/Index");
+                return RedirectToAction("/MyPolls");
             }
             return View(poll);
         }
@@ -90,9 +95,45 @@ namespace MultiPolls.Controllers
             {
                 db.Entry(poll).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("/Index");
+                return RedirectToAction("/MyPolls");
             }
             return View(poll);
+        }
+
+
+        //GET: /Polls/Publish/5
+        public ActionResult Publish(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Poll poll = db.Polls.Find(id);
+            if (poll == null)
+            {
+                return HttpNotFound();
+            }
+            return View(poll);
+        
+        }
+
+        // POST: /Polls/Publish/5
+        [HttpPost, ActionName("Publish")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PublishConfirmed(int id, bool? Check)
+        {
+            Poll poll = db.Polls.Find(id);
+            if (Check == false)
+            {
+                poll.IsPublic = false;
+            }
+            else
+            {
+                poll.IsPublic = true;
+            }
+            poll.IsPublished = true;
+            db.SaveChanges();
+            return RedirectToAction("/PublishedPolls");
         }
 
         // GET: /Polls/Delete/5
@@ -118,7 +159,7 @@ namespace MultiPolls.Controllers
             Poll poll = db.Polls.Find(id);
             db.Polls.Remove(poll);
             db.SaveChanges();
-            return RedirectToAction("/Polls/Index");
+            return RedirectToAction("/Polls/MyPolls");
         }
 
         protected override void Dispose(bool disposing)
@@ -136,19 +177,32 @@ namespace MultiPolls.Controllers
             return View(db.Polls.ToList());
         }
 
+        // GET: /Polls/PublishedPolls
+        public ActionResult PublicPolls()
+        {
+            return View(db.Polls.ToList());
+        }
+
         // GET: /Polls/Vote
         public ActionResult Vote(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Poll poll = db.Polls.Find(id);
-            if (poll == null)
+            if (poll.HasVoted == true)
             {
-                return HttpNotFound();
+                return RedirectToAction("PublishedPolls");
             }
-            return View(poll);
+            else
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                if (poll == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(poll);
+            }
         }
 
         // POST: /Polls/Vote/4
@@ -156,83 +210,37 @@ namespace MultiPolls.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Vote(int? id, string Option, [Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ")] Poll poll)
+        public ActionResult Vote(int? id, string Option, [Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ, HasVoted")] Poll poll)
         {
             if (ModelState.IsValid)
             {
                 //for (char c1 = 'A'; c1 <= 'J'; c1++)
                 //{
+                poll = db.Polls.Find(id);
+                poll.HasVoted = true;
 
                 if (Option == "A")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerA = poll.AnswerA + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "B")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerB = poll.AnswerB + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "C")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerC = poll.AnswerC + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "D")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerD = poll.AnswerD + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "E")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerE = poll.AnswerE + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "F")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerF = poll.AnswerF + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "G")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerG = poll.AnswerG + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "H")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerH = poll.AnswerH + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "I")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerI = poll.AnswerI + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
                 else if (Option == "J")
-                {
-                    poll = db.Polls.Find(id);
                     poll.AnswerJ = poll.AnswerJ + 1;
-                    db.SaveChanges();
-                    return RedirectToAction("PollResults/" + id);
-                }
+
+                db.SaveChanges();
                 return RedirectToAction("PollResults/" + id);
             }
             return View(poll);

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MultiPolls.Models.Poll>
+
+    @{
+        ViewBag.Title = "Public Polls";
+    }
+
+    <h2>Public Polls</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PollQuestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.IsPublic == true && item.IsPublished == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PollQuestion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EditDate)
+                    </td>
+
+                    <td>
+                        @if (item.item.HasVoted == false)
+                        {
+                            @Html.ActionLink("Send to Friend", "Vote", new { id = item.ID })
+                        }
+                        @Html.ActionLink("Results", "PollResults", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>

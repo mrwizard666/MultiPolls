@@ -13,7 +13,7 @@
         <form>
             <fieldset id="inputs">
                 @Html.ValidationSummary()
-                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Email", @class = "form-control" })
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Username", @class = "form-control" })
                 @*<input id="password" type="password" name="Password" placeholder="Password" required>*@
                 @Html.PasswordFor(m => m.Password, new { @placeholder = "Password", @class = "col-md-2 control-label" })
             </fieldset>
