@@ -4,141 +4,150 @@
     ViewBag.Title = "Publish";
 }
 
-<h2>Publish</h2>
+<div class="container jumbot jumbotron">
 
-<h3>Are you sure you want to publish this?</h3>
-
-<div>
-    <h4>Poll</h4>
+    <h3>Are you sure you want to publish this poll?</h3>
     <hr />
-    <div>
-        @Html.Label("Make poll public")
-        @Html.CheckBoxFor(m => m.IsPublic)
-        @Html.HiddenFor(m => m.ID)
-
+    <div class="row">
+        <div class="row-height publish-margin2 col-sm-3">
+            @Html.Label("Username visible to public")
+        </div>
+        <div class=" row-height left-pad4 col-sm-9">
+            @Html.CheckBoxFor(m => m.UsernameVisible)
+            @Html.HiddenFor(m => m.ID)
+        </div>
     </div>
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dl-horizontal ">
+        <dt class="row-height publish-margin">
             @Html.DisplayNameFor(model => model.CreationDate)
         </dt>
 
-        <dd>
+        <dd class="row-height left-pad3">
             @Html.DisplayFor(model => model.CreationDate)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EditDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EditDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatorID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatorID)
-        </dd>
-
-        <dt>
+        <dt class="row-height publish-margin">
             @Html.DisplayNameFor(model => model.PollQuestion)
         </dt>
 
-        <dd>
+        <dd class="row-height left-pad3">
             @Html.DisplayFor(model => model.PollQuestion)
         </dd>
 
-        <dt>
+        <dt class="row-height publish-margin">
             @Html.DisplayNameFor(model => model.OptionA)
         </dt>
 
-        <dd>
+        <dd class="row-height left-pad3">
             @Html.DisplayFor(model => model.OptionA)
         </dd>
 
-        <dt>
+        <dt class="row-height publish-margin">
             @Html.DisplayNameFor(model => model.OptionB)
         </dt>
 
-        <dd>
+        <dd class="row-height left-pad3">
             @Html.DisplayFor(model => model.OptionB)
         </dd>
+        @if (Model.OptionC != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionC)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionC)
-        </dt>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionC)
+            </dd>
+        }
+        @if (Model.OptionD != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionD)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionC)
-        </dd>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionD)
+            </dd>
+        }
+        @if (Model.OptionE != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionE)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionD)
-        </dt>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionE)
+            </dd>
+        }
+        @if (Model.OptionF != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionF)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionD)
-        </dd>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionF)
+            </dd>
+        }
+        @if (Model.OptionG != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionG)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionE)
-        </dt>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionG)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionE)
-        </dd>
+        }
+        @if (Model.OptionH != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionH)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionF)
-        </dt>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionH)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionF)
-        </dd>
+        }
+        @if (Model.OptionI != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionI)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionG)
-        </dt>
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionI)
+            </dd>
+        }
+        @if (Model.OptionJ != null)
+        {
+            <dt class="row-height publish-margin">
+                @Html.DisplayNameFor(model => model.OptionJ)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionI)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionI)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionJ)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionJ)
-        </dd>
-
+            <dd class="row-height left-pad3">
+                @Html.DisplayFor(model => model.OptionJ)
+            </dd>
+        }
     </dl>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Publish" class="btn btn-default" /> |
-            @Html.ActionLink("Cancel", "MyPolls")
-        </div>
+       <ul class="classWithPad">
+            <li class="nav-display-inline">
+                <input type="submit" value="Publish" class="push_button" />
+            </li>
+            <li class="nav-display-inline classWithPad">
+               
+                    <a href="/Polls/MyPolls" class="push_button">
+                        Cancel
+                    </a>
+            </li>
+        </ul>
+        
+     
     }
 </div>

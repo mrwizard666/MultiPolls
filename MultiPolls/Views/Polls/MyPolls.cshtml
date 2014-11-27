@@ -4,52 +4,90 @@
     ViewBag.Title = "Index";
 }
 
-<p>
-    @Html.ActionLink("My Polls in Progress", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PollQuestion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatorID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EditDate)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        if (item.CreatorID == User.Identity.Name && item.IsPublished == false)
+<div class="jumbotron jumbot">
+    <h3>
+        My Polls
+    </h3>
+    <table class="table ">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th class="cell-width-poll">
+                @Html.DisplayNameFor(model => model.PollQuestion)
+            </th>
+            <th class="cell-width-status">
+                Poll Status
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreationDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PollQuestion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatorID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EditDate)
-                </td>
+            if (item.CreatorID == User.Identity.Name && item.IsPublished == true)
+            {
+                if (item.HasVoted == false)
+                {
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
-                    @Html.ActionLink("Publish", "Publish", new { id = item.ID })
-                </td>
-            </tr>
+                    <tr>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.CreationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PollQuestion)
+                        </td>
+                        <td>
+                            Published
+                        </td>
+                        <td>
+                            @Html.ActionLink("Vote ", "Vote", new { id = item.ID }) &nbsp
+                      | &nbsp
+                            @Html.ActionLink(" Send to Friend", "Vote", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.CreationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PollQuestion)
+                        </td>
+                        <td>
+                            Voted
+                        </td>
+                        <td>
+                            @Html.ActionLink("Results ", "PollResults", new { id = item.ID }) &nbsp
+                     |
+                            &nbsp @Html.ActionLink(" Send to Friend", "Vote", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
+            }
+            else if (item.CreatorID == User.Identity.Name && item.IsPublished == false)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PollQuestion)
+                    </td>
+                    <td>
+                        In Progress
+                    </td>
+                    <td >
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                        &nbsp|&nbsp
+                        @Html.ActionLink(" Delete ", "Delete", new { id = item.ID })
+                        &nbsp |
+                        &nbsp @Html.ActionLink(" Publish", "Publish", new { id = item.ID })
+                    </td>
+                </tr>
+            }
         }
-    }
 
-</table>
+
+    </table>
+</div>

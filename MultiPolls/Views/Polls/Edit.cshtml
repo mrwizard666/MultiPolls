@@ -4,42 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
+<div class="jumbotron jumbot">
+    @using (Html.BeginForm())
+    { @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>Poll</h4>
+        <h3>Edit Poll</h3>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate)
-                @Html.ValidationMessageFor(model => model.CreationDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EditDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EditDate)
-                @Html.ValidationMessageFor(model => model.EditDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatorID, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatorID)
-                @Html.ValidationMessageFor(model => model.CreatorID)
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.PollQuestion, new { @class = "control-label col-md-2" })
@@ -129,17 +102,23 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        <ul class="classWithPad">
+            <li class="nav-display-inline">
+                <input type="submit" value="Save" class="push_button" />
+            </li>
+            <li class="nav-display-inline classWithPad">
+               
+                    <a href="/Polls/MyPolls" class="push_button">
+                        Cancel
+                    </a>
+            </li>
+        </ul>
+        
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "MyPolls")
+    }
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -8,6 +8,9 @@ $(document).ready(function () {
             $("#Option" + y).show();
             x++;
             y++;
+            if (y === 11) {$('#add-option').hide()
+            };
         };
     });
 });
+

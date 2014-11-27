@@ -26,7 +26,7 @@
 
         @foreach (var item in Model)
         {
-            if (item.IsPublic == true && item.IsPublished == true)
+            if (item.IsPublished == true)
             {
                 <tr>
                     <td>
@@ -43,11 +43,18 @@
                     </td>
 
                     <td>
-                        @if (item.item.HasVoted == false)
-                        {
-                            @Html.ActionLink("Send to Friend", "Vote", new { id = item.ID })
-                        }
+                       @*@if (item.User == User.Identity.Name && item.QuestionID == item.ID)
+                       { 
+                       @Html.ActionLink("Vote", "Vote", new { id = item.ID }) 
+                       @Html.ActionLink("Send to Friend", "Vote", new { id = item.ID }) 
+                       @Html.ActionLink("Results", "PollResults", new { id = item.ID })
+                       }                      
+                       else
+                       {*@
+                        @Html.ActionLink("Vote", "Vote", new { id = item.ID }) 
+                        @Html.ActionLink("Send to Friend", "Vote", new { id = item.ID })
                         @Html.ActionLink("Results", "PollResults", new { id = item.ID })
+                        
                     </td>
                 </tr>
             }

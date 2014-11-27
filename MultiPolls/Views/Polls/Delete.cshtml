@@ -4,133 +4,133 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Poll</h4>
+<div class="jumbot jumbotron">
+    <h3>Are you sure you want to delete this poll?</h3>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
+    <div>
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
+            <dt class="row-height ">
+                @Html.DisplayNameFor(model => model.PollQuestion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EditDate)
-        </dt>
+            <dd class="row-height">
+                @Html.DisplayFor(model => model.PollQuestion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EditDate)
-        </dd>
+            <dt class="row-height">
+                @Html.DisplayNameFor(model => model.OptionA)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatorID)
-        </dt>
+            <dd class="row-height">
+                @Html.DisplayFor(model => model.OptionA)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatorID)
-        </dd>
+            <dt class="row-height">
+                @Html.DisplayNameFor(model => model.OptionB)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PollQuestion)
-        </dt>
+            <dd class="row-height">
+                @Html.DisplayFor(model => model.OptionB)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PollQuestion)
-        </dd>
+            @if (Model.OptionC != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionC)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionA)
-        </dt>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionC)
+                </dd>
+            }
+            @if (Model.OptionD != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionD)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionA)
-        </dd>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionD)
+                </dd>
+            }
+            @if (Model.OptionE != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionE)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionB)
-        </dt>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionE)
+                </dd>
+            }
+            @if (Model.OptionF != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionF)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionB)
-        </dd>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionF)
+                </dd>
+            }
+            @if (Model.OptionG != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionG)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionC)
-        </dt>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionG)
+                </dd>
+            }
+            @if (Model.OptionH != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionH)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionC)
-        </dd>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionH)
+                </dd>
+            }
+            @if (Model.OptionI != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionI)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionD)
-        </dt>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionI)
+                </dd>
+            }
+            @if (Model.OptionJ != null)
+            {
+                <dt class="row-height">
+                    @Html.DisplayNameFor(model => model.OptionJ)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionD)
-        </dd>
+                <dd class="row-height">
+                    @Html.DisplayFor(model => model.OptionJ)
+                </dd>
+            }
+        </dl>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionE)
-        </dt>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.OptionE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionF)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionF)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionG)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionG)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionH)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionH)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionI)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionI)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OptionJ)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OptionJ)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "MyPolls")
-        </div>
-    }
+            <ul class="classWithPad">
+            <li class="nav-display-inline">
+                <input type="submit" value="Delete" class="push_button" />
+            </li>
+            <li class="nav-display-inline classWithPad">
+               
+                    <a href="/Polls/MyPolls" class="push_button">
+                        Cancel
+                    </a>
+            </li>
+        </ul>
+        }
+    </div>
 </div>

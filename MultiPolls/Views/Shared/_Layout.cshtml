@@ -11,7 +11,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <script src="@Url.Content("/Scripts/jquery.view.polls.js")"></script>
     <script src="@Url.Content("/Scripts/jquery.create.poll.js")"></script>
     <script src="@Url.Content("/Scripts/jquery.login.form.js")"></script>
     <script src="@Url.Content("/Scripts/Highcharts-4.0.1/js/highcharts.js")"></script>
@@ -29,43 +28,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <img class="navbar-brand img-max-size img-responsive"
-                         src="~/Resources/LogoHeader.png" />
-                </div>
-                <div class="navbar-mid navbar-collapse collapse">
-                    <div class="btn-group">
-                        <ul class="nav-display-inline">
-                            <li class="nav-display-inline ">
-                                @*<a href="/Polls/Create" class="">*@
-                                @Html.ActionLink("Create Poll", "Create", "Polls", null, new
-                           { @*email = "test"*@ @id = "create-button" , @class = "btn btn-danger navbar-btn"
-                           })
-
-                                @*@Html.DisplayNameFor(id => Model.Id)*@
-                            </li>
-                            <li class="nav-display-inline">
-                                <a id="view-trigger" class=" btn btn-danger navbar-btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                    View My Polls
-                                    <span class="caret"></span>
-                                </a>
-                                <ul id="view-content" class="dropdown-menu btn btn-danger navbar-btn">
-                                    <li><a href="/Polls/MyPolls">In Progress</a></li>
-                                    <li><a href="/Polls/PublishedPolls">Published</a></li>
-                                </ul>
-                            </li>
-                            <li id="view-public-button" class="nav-display-inline">
-                                <a href="/Polls/PublicPolls" class="btn btn-danger navbar-btn">
-                                    View Public Polls
-                                </a>
-                            </li>
-                        </ul>
+                    <div id="logo">
+                        <a href="/Index">
+                            <img class="navbar-brand img-max-size img-responsive"
+                                 src="~/Resources/LogoHeader.png" />
+                        </a>
                     </div>
                 </div>
-                <div class="navbar-right navbar-collapse collapse">
+                <div>
                     @Html.Partial("_LoginBarPartial")
-                </div>
             </div>
         </div>
+            </div>
     </header>
 
     <div id="body" class="index-background">

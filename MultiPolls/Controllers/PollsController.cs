@@ -12,6 +12,7 @@ using DotNet.Highcharts.Helpers;
 using System.Drawing;
 using DotNet.Highcharts.Enums;
 using Microsoft.AspNet.Identity;
+using MultiPolls.ViewModels;
 
 namespace MultiPolls.Controllers
 {
@@ -62,6 +63,7 @@ namespace MultiPolls.Controllers
                 poll.IsPublished = false;
                 poll.IsPublic = false;
                 poll.HasVoted = false;
+                poll.UsernameVisible = false;
                 db.Polls.Add(poll);
                 db.SaveChanges();
                 return RedirectToAction("/MyPolls");
@@ -77,6 +79,7 @@ namespace MultiPolls.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Poll poll = db.Polls.Find(id);
+           
             if (poll == null)
             {
                 return HttpNotFound();
@@ -93,6 +96,13 @@ namespace MultiPolls.Controllers
         {
             if (ModelState.IsValid)
             {
+                poll.CreatorID = User.Identity.Name;
+                poll.EditDate = DateTime.Now;
+                poll.CreationDate = DateTime.Now;
+                poll.IsPublished = false;
+                poll.IsPublic = false;
+                poll.HasVoted = false;
+                poll.UsernameVisible = false;
                 db.Entry(poll).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("/MyPolls");
@@ -125,15 +135,16 @@ namespace MultiPolls.Controllers
             Poll poll = db.Polls.Find(id);
             if (Check == false)
             {
-                poll.IsPublic = false;
+                poll.UsernameVisible = false;
             }
             else
             {
-                poll.IsPublic = true;
+                poll.UsernameVisible = true;
             }
+            poll.IsPublic = true;
             poll.IsPublished = true;
             db.SaveChanges();
-            return RedirectToAction("/PublishedPolls");
+            return RedirectToAction("/MyPolls");
         }
 
         // GET: /Polls/Delete/5
@@ -159,7 +170,7 @@ namespace MultiPolls.Controllers
             Poll poll = db.Polls.Find(id);
             db.Polls.Remove(poll);
             db.SaveChanges();
-            return RedirectToAction("/Polls/MyPolls");
+            return RedirectToAction("/MyPolls");
         }
 
         protected override void Dispose(bool disposing)
@@ -177,11 +188,12 @@ namespace MultiPolls.Controllers
             return View(db.Polls.ToList());
         }
 
-        // GET: /Polls/PublishedPolls
+        // GET: /Polls/PublicPolls
         public ActionResult PublicPolls()
         {
             return View(db.Polls.ToList());
         }
+
 
         // GET: /Polls/Vote
         public ActionResult Vote(int? id)
@@ -189,7 +201,7 @@ namespace MultiPolls.Controllers
             Poll poll = db.Polls.Find(id);
             if (poll.HasVoted == true)
             {
-                return RedirectToAction("PublishedPolls");
+                return RedirectToAction("MyPolls");
             }
             else
             {
@@ -210,14 +222,17 @@ namespace MultiPolls.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Vote(int? id, string Option, [Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ, HasVoted")] Poll poll)
+        public ActionResult Vote(int? id, string Option, [Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ, HasVoted")] Poll poll, [Bind(Include = "User, QuestionID")] VoteLog vote )
         {
             if (ModelState.IsValid)
             {
                 //for (char c1 = 'A'; c1 <= 'J'; c1++)
                 //{
                 poll = db.Polls.Find(id);
-                poll.HasVoted = true;
+                vote.QuestionID = poll.ID;
+                vote.User = User.Identity.Name;
+                //poll.HasVoted = true;
+                db.VoteLogs.Add(vote);
 
                 if (Option == "A")
                     poll.AnswerA = poll.AnswerA + 1;

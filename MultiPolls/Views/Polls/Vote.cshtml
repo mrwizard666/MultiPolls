@@ -4,45 +4,101 @@
     ViewBag.Title = "Vote";
 }
 
+<div class="jumbot jumbotron">
 
-@using (Html.BeginForm("Vote", "Polls", @*new { ReturnUrl = ViewBag.ReturnUrl },*@ FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-<div>
-    @Html.DisplayFor(model => model.PollQuestion)
-    <ul class="ul-properties">@*  *@
-        <li>
-            @Html.RadioButtonFor(model => model.OptionA, "A", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionA) 
-        <li>
-            @Html.RadioButtonFor(model => model.OptionB, "B", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionB)
+    @using (Html.BeginForm("Vote", "Polls", @*new { ReturnUrl = ViewBag.ReturnUrl },*@ FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
 
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionC, "C", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC) 
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionD, "D", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionE, "E", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionE)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionF, "F", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionF)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionG, "G", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionG)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionH, "H", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionH)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionI, "I", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionI)
-        </li>
-        <li>
-            @Html.RadioButtonFor(model => model.OptionJ, "J", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionJ)
-        </li>
-    </ul>
-    <input type="submit" id="vote-submit" value="Vote">
+        <div class="top-pad">
+            <div class="title-box">
+                @Html.DisplayFor(model => model.PollQuestion)
+            </div>
+        </div>
+
+    <div class="no-left-pad options-box radio-inline">
+        <ul>
+            <li class="truncate list-unstyled ">
+
+                @Html.RadioButtonFor(model => model.OptionA, "A", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionA)
+
+            <li class="list-unstyled truncate top-pad ">
+
+                @Html.RadioButtonFor(model => model.OptionB, "B", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionB)
+
+            </li>
+            @if (Model.OptionC != null)
+            {
+                <li class="list-unstyled truncate top-pad ">
+
+
+                    @Html.RadioButtonFor(model => model.OptionC, "C", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionC)
+                </li>
+            }
+            @if (Model.OptionD != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionD, "D", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionD)
+                </li>
+            }
+            @if (Model.OptionE != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionE, "E", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionE)
+                </li>
+            }
+            @if (Model.OptionF != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionF, "F", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionF)
+                </li>
+            }
+            @if (Model.OptionG != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionG, "G", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionG)
+                </li>
+            }
+            @if (Model.OptionH != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionH, "H", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionH)
+                </li>
+            }
+            @if (Model.OptionI != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionI, "I", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionI)
+                </li>
+            }
+            @if (Model.OptionJ != null)
+            {
+                <li class="list-unstyled truncate top-pad">
+
+                    @Html.RadioButtonFor(model => model.OptionJ, "J", new { Name = "Option" }) @Html.DisplayFor(model => model.OptionJ)
+                </li>
+            }
+        </ul>
+    </div>
+        <ul class="classWithPad2">
+            <li class="nav-display-inline">
+                <input type="submit" value="Vote" class="push_button" />
+            </li>
+            <li class="nav-display-inline classWithPad2">
+
+                <a href="/Polls/MyPolls" class="push_button">
+                    Cancel
+                </a>
+            </li>
+        </ul>
+
+
+    }
+
 </div>
-}
-

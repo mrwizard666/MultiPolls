@@ -179,6 +179,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollsController.cs" />
+    <Compile Include="Controllers\VoteLogController.cs" />
     <Compile Include="CustomHtmlHelpers\CustomHtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,12 +272,42 @@
     <Compile Include="Migrations\201411252110206_addHasVotedBool.Designer.cs">
       <DependentUpon>201411252110206_addHasVotedBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411260706541_addVoteLogTable.cs" />
+    <Compile Include="Migrations\201411260706541_addVoteLogTable.Designer.cs">
+      <DependentUpon>201411260706541_addVoteLogTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260832491_testmig.cs" />
+    <Compile Include="Migrations\201411260832491_testmig.Designer.cs">
+      <DependentUpon>201411260832491_testmig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260904501_updateVoteId.cs" />
+    <Compile Include="Migrations\201411260904501_updateVoteId.Designer.cs">
+      <DependentUpon>201411260904501_updateVoteId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260948398_updateVoteKey.cs" />
+    <Compile Include="Migrations\201411260948398_updateVoteKey.Designer.cs">
+      <DependentUpon>201411260948398_updateVoteKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270925390_addboolandstring.cs" />
+    <Compile Include="Migrations\201411270925390_addboolandstring.Designer.cs">
+      <DependentUpon>201411270925390_addboolandstring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411270936230_deletecol.cs" />
+    <Compile Include="Migrations\201411270936230_deletecol.Designer.cs">
+      <DependentUpon>201411270936230_deletecol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411271038460_adddatefix.cs" />
+    <Compile Include="Migrations\201411271038460_adddatefix.Designer.cs">
+      <DependentUpon>201411271038460_adddatefix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Poll.cs" />
+    <Compile Include="Models\VoteLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\PollResultsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -350,7 +381,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\jquery.view.polls.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -395,6 +425,12 @@
     <Content Include="Views\Polls\MyPolls.cshtml" />
     <Content Include="Views\Polls\Publish.cshtml" />
     <Content Include="Views\Polls\PublicPolls.cshtml" />
+    <Content Include="Views\VoteLog\Create.cshtml" />
+    <Content Include="Views\VoteLog\Delete.cshtml" />
+    <Content Include="Views\VoteLog\Details.cshtml" />
+    <Content Include="Views\VoteLog\Edit.cshtml" />
+    <Content Include="Views\VoteLog\Index.cshtml" />
+    <Content Include="Views\VoteLog\_VotePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -469,6 +505,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411252110206_addHasVotedBool.resx">
       <DependentUpon>201411252110206_addHasVotedBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260706541_addVoteLogTable.resx">
+      <DependentUpon>201411260706541_addVoteLogTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260832491_testmig.resx">
+      <DependentUpon>201411260832491_testmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260904501_updateVoteId.resx">
+      <DependentUpon>201411260904501_updateVoteId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260948398_updateVoteKey.resx">
+      <DependentUpon>201411260948398_updateVoteKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270925390_addboolandstring.resx">
+      <DependentUpon>201411270925390_addboolandstring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411270936230_deletecol.resx">
+      <DependentUpon>201411270936230_deletecol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411271038460_adddatefix.resx">
+      <DependentUpon>201411271038460_adddatefix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -20,22 +20,38 @@
         box-shadow: 0px 9px 0px #84261a;
 }
 .push_button:active{
-    -webkit-box-shadow: 0px 2px 0px #84261a;
+    /*-webkit-box-shadow: 0px 2px 0px #84261a;
     -moz-box-shadow: 0px 2px 0px #84261a;
-    box-shadow: 0px 2px 0px #84261a;
+    box-shadow: 0px 2px 0px #84261a;*/
     position:relative;
     top:10px;
 }
-.jumbotron {
-    padding: 0.5em 0.6em;
-    max-width: 600px;
-    
-/*background-image: url("/Resources/Room.png");
-background-size: cover;*/
+
+html,body{
+  height:100%;
+  min-height:100%;
 }
 
-.left-pad{
-    padding-left: 3em;
+
+.jumbotron {
+    padding: 0.5em 0.6em;
+    height: 100%;
+    /*max-width: 600px;*/
+}
+
+.my-jumbotron{
+    padding: 0.5em 0.6em;
+   
+}
+/*background-image: url("/Resources/Room.png");
+background-size: cover;*/
+
+.cell-width-poll{
+    width: 33em;
+}
+
+.cell-width-status{
+    width: 10em;
 }
 
 .left-pad2{
@@ -44,12 +60,41 @@ background-size: cover;*/
 }
 
 .left-pad3{
-    padding-left: 3em;
+    padding-left: 5.5em;
+}
+.left-pad4{
+    padding-left: 0.1em;
+}
+.left-pad5{
+    padding-left: 0.5em;
+}
+
+.publish-margin{
+    margin-left: 3em;
+}
+.publish-margin2{
+    padding-left: 2.6em;
 }
 
 .jumbot {
         font-size: 1em;
     }
+
+.row-height{
+    padding-bottom: 0.5em;
+}
+
+#add-option{
+    margin-left: 110px;
+}
+
+.box-width {
+    width: 500px;
+    /*margin-left: 100px;*/
+}
+.label-width {
+    /*min-width: 200px;*/
+}
 
 /*.navbar.center .navbar-inner {
     text-align: center;
@@ -83,6 +128,8 @@ background-size: cover;*/
 
 }
 
+
+
 .navbar-mid{
     position: absolute;
     width: 100%;
@@ -101,8 +148,18 @@ background-size: cover;*/
 }*/
 
 .classWithPad { 
-    margin:10px;
-    padding:10px;
+    margin-left:10em;
+    padding-right: 10em;
+    padding-top: 0.2em;
+
+}
+
+.classWithPad2 { 
+    /*margin-left:3em;*/
+    /*padding-right: 10em;*/
+    padding-left: 5em;
+    padding-top: 1em;
+
 }
 
 #footer {
@@ -231,15 +288,14 @@ input[type="checkbox"].input-validation-error {
     padding-left: 40px;
 }
 
-.login-drop-box{
-    position: fixed;
-    top: 10px;
-    right: 15px;
+.hid {
+    visibility: hidden;
 }
 
 .hide-this{
     display: none;
 }
+
 
 logo-float {
     float: left
@@ -253,37 +309,123 @@ logo-float {
     /*margin:0 10px 10px 0;*/
 }
 
-.ul-properties{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  background: #eee;
-  border-bottom: 1px solid #fff;
-  border-radius: 3px;  
+.login-drop-box{
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
+    top: 10px;
+    right: 45px;
+    list-style: none;
+    background-color: lightgray;
+    border-bottom: 1px solid black;
+    border-radius: 3px;  
 }
 
-#login-trigger, #signup{
+.ul-properties{
+  /*margin-top: 50px;*/
+  /*padding-top: 30px;*/
+  /*margin: 0;*/
+  /*list-style: none;
+  background-color: lightgreen;
+  border-bottom: 1px solid #fff;
+  border-radius: 3px;*/  
+}
+
+/*.boxtitle {
+    width: 20em;
+    height: 2em;
+    background-color: green;
+    text-align: center;
+    padding-top: 0.4em;
+    font-size: large;
+    color: black;
+    border-radius: 1em;
+}*/
+/*.radio-indent { 
+    margin-left: 30px; 
+    text-indent: -20px; 
+}*/
+
+input[type="radio"] {
+  margin-right: 1em;
+}
+
+.truncate {
+  max-width: 500px;
+}
+
+.title-box{
+    border-radius:1em;
+    border: 1px green;
+    /*background-color: green;*/
+    /*background-color: red;*/
+    /*background-color: blue;*/
+    /*background-color: orange;*/
+    /*background-color: purple;*/
+    background-color: brown;
+    padding: 1em;
+    color: white;
+    font-size: large;
+    font-weight:bold;
+    width: 500px;
+    
+}
+
+.radio-inline{
+    font-weight: bold;
+}
+
+.options-box{
+    border-radius:1em;
+    border: solid brown;
+    border-width: 4px 4px;
+    /*border-style:solid;
+    border: red;
+    border-bottom-width: 20px;*/
+    background-color:darksalmon;
+    padding: 1em;
+    color: black;
+    text-align: left;
+    font-size: medium;
+    font-weight:bold;
+    width:500px;
+}
+
+.no-left-pad{
+    padding-left: 0;
+}
+
+.top-pad {
+    padding-top: 2em;
+}
+
+.down-pad {
+    padding-top: 2em;
+}
+
+#login-trigger, #signup-trigger{
   line-height: 25px;
   font-weight: bold;
   padding: 0 8px;
   text-decoration: none;
-  color: #444;
+  color: black;
   text-shadow: 0 1px 0 #fff;
 }
 
 #login-trigger:hover,
 #login .active,
 #signup a:hover {
-  background: yellow;
+  background: linen;
 }
 
-#login-content {
+#login-content, #signup-content {
   display: none;
   position: absolute;
-  top: 24px;
+  top: 35px;
   right: 0;
   z-index: 999;    
-  background: #fff;
+  background-color: lightgray;
   background-image: linear-gradient(top, #fff, #eee);  
   padding: 15px;
   box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
@@ -298,13 +440,13 @@ logo-float {
 #signup-content {
   display: none;
   position: absolute;
-  top: 24px;
+  top: 35px;
   right: 0;
   z-index: 999;    
-  background: #fff;
+  background-color: lightgray;
   background-image: linear-gradient(top, #fff, #eee);  
   padding: 15px;
-  box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);
+  /*box-shadow: 0 2px 2px -1px rgba(0,0,0,.9);*/
   border-radius: 3px 0 3px 3px;
 }
 
@@ -319,13 +461,13 @@ logo-float {
   padding: 6px 5px;
   margin: 0 0 5px 0;
   width: 238px;
-  border: 1px solid #ccc;
+  border: 1px solid darkgray;
   border-radius: 3px;
   box-shadow: 0 1px 1px #ccc inset;
 }
 
 #inputs input:focus {
-  background-color: #fff;
+  background-color: linen;
   border-color: #e8c291;
   outline: none;
   box-shadow: 0 0 0 1px #e8c291 inset;
@@ -336,13 +478,13 @@ logo-float {
   padding: 6px 5px;
   margin: 0 0 5px 0;
   width: 238px;
-  border: 1px solid #ccc;
+  border: 1px solid darkgray;
   border-radius: 3px;
   box-shadow: 0 1px 1px #ccc inset;
 }
 
 #signup-inputs input:focus {
-    background-color: #fff;
+    background-color: linen;
     border-color: #e8c291;
     outline: none;
     box-shadow: 0 0 0 1px #e8c291 inset;
@@ -357,7 +499,7 @@ logo-float {
 }
 
 #login #submit {    
-  background-color: #d14545;
+  background-color: crimson;
   background-image: linear-gradient(top, #e97171, #d14545);
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -375,7 +517,7 @@ logo-float {
 }
 
 #signup #s-submit {    
-  background-color: #d14545;
+  background-color: crimson;
   background-image: linear-gradient(top, #e97171, #d14545);
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
