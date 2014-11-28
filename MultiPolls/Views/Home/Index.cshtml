@@ -8,24 +8,38 @@
 <div id="login-form-vanish">
     <div id="impress" class="impress-text-color">
         @*<div class="pie-home">*@
-        <div class="step" data-x="0" data-y="0">
-            My first slide
-            @Html.Image("~/Resources/Pie.png", "This is alt text")
+        <div class="step" data-x="0"  data-scale="1" data-z="100" >
+            Welcome to Multipolls
+            @Html.Image("~/Resources/Pie.png", "text")
         </div>
-        <div class="step" data-x="500" data-y="0">
-            This is slide 2
+        <div class="step" data-x="1500"  data-y="0" data-scale="0.5">
+            Signup for free
+            @Html.Image("~/Resources/signup.png", "text")
+
         </div>
-        <div class="step" data-x="500" data-y="-200">
-            This is slide 3
+        <div class="step" data-x="600" data-y="-1200" data-scale="0.5">
+            Create a poll
+            @Html.Image("~/Resources/createpoll.png", "text")
+
+
         </div>
-        <div class="step" data-x="500" data-y="-400" data-scale="0.5">
-            This is slide 4
+        <div class="step" data-x="1400" data-y="-500" data-scale="0.5">
+            Monitor your polls and share with your friends 
+            @Html.Image("~/Resources/managepolls.png", "text")
+
+
         </div>
-        <div class="step" data-x="0" data-y="-400" data-rotate="90">
-            This is slide 5 and it rotates in.
+        <div class="step" data-x="-200" data-y="-1400" data-rotate="90">
+            Your vote counts too
+            @Html.Image("~/Resources/vote.png", "text")
+
+
         </div>
-        <div class="step" data-x="-600" data-y="-300" data-rotate-x="30" data-rotate-y="-60" data-rotate-z="90" data-scale="4">
-            This is slide 7 and it has a 3D transition AND a scale.
+        <div class="step" data-x="-1900" data-y="-300" data-rotate-x="30" data-rotate-y="-60" data-rotate-z="90" data-scale="4">
+            View poll results
+            @Html.Image("~/Resources/results.png", "text")
+
+
         </div>
     </div>
 </div>

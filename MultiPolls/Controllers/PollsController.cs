@@ -20,27 +20,7 @@ namespace MultiPolls.Controllers
     {
         private PollDBContext db = new PollDBContext();
 
-        // GET: /Polls/
-        public ActionResult MyPolls()
-        {
-            return View(db.Polls.ToList());
-        }
-
-        // GET: /Polls/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Poll poll = db.Polls.Find(id);
-            if (poll == null)
-            {
-                return HttpNotFound();
-            }
-            return View(poll);
-        }
-
+     
         // GET: /Polls/Create
         [Authorize]
         public ActionResult Create()
@@ -182,16 +162,37 @@ namespace MultiPolls.Controllers
             base.Dispose(disposing);
         }
 
-        // GET: /Polls/PublishedPolls
-        public ActionResult PublishedPolls()
+        // GET: /Polls/
+        public ActionResult MyPolls()
         {
-            return View(db.Polls.ToList());
+            PollDBContext db = new PollDBContext();
+
+            var creatorID = from c in db.Polls
+                            where c.CreatorID == User.Identity.Name
+                            select c;
+
+            return View(creatorID.ToList());
         }
+
 
         // GET: /Polls/PublicPolls
         public ActionResult PublicPolls()
         {
+            //Split into partial views
+
+            //PollDBContext db = new PollDBContext();
+
+            //var voteDetails = from u in db.Polls
+            //                  join v in db.VoteLogs
+            //                  on u.ID equals v.QuestionID
+            //                  into uv
+            //                  from v in uv
+            //                  where v.QuestionID == u.ID && v.User == User.Identity.Name
+            //                  select uv
+
+            //return View(voteDetails.ToList());
             return View(db.Polls.ToList());
+
         }
 
 
@@ -199,12 +200,12 @@ namespace MultiPolls.Controllers
         public ActionResult Vote(int? id)
         {
             Poll poll = db.Polls.Find(id);
-            if (poll.HasVoted == true)
-            {
-                return RedirectToAction("MyPolls");
-            }
-            else
-            {
+            //if (poll.HasVoted == true)
+            //{
+            //    return RedirectToAction("MyPolls");
+            //}
+            //else
+            //{
                 if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -214,7 +215,7 @@ namespace MultiPolls.Controllers
                     return HttpNotFound();
                 }
                 return View(poll);
-            }
+            //}
         }
 
         // POST: /Polls/Vote/4
@@ -231,7 +232,7 @@ namespace MultiPolls.Controllers
                 poll = db.Polls.Find(id);
                 vote.QuestionID = poll.ID;
                 vote.User = User.Identity.Name;
-                //poll.HasVoted = true;
+                poll.HasVoted = true;
                 db.VoteLogs.Add(vote);
 
                 if (Option == "A")
@@ -269,8 +270,11 @@ namespace MultiPolls.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
+           
             poll = db.Polls.Find(id);
+            //if (poll.OptionC != null)
+            //    var objectC = {poll.OptionC, poll.AnswerC};
+
 
             DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart");
 
@@ -284,26 +288,25 @@ namespace MultiPolls.Controllers
             .SetSeries(new Series
             {
                 Type = ChartTypes.Pie,
-                Name = "Test pie chart",
+                Name = "Opinions",
                 Data = new Data(new object[]
                 {
-                    
-                    
+                     //for (char c1 = 'A'; c1 <= 'J'; c1++)
+                //{
                     new object[] { poll.OptionA, poll.AnswerA },
                     new object[] { poll.OptionB, poll.AnswerB },
-                    //new DotNet.Highcharts.Options.Point
-                    //{
-                    //    Name = "Chrome",
-                    //    Y = 12.8,
-                    //    Sliced = true,
-                    //    Selected = true
-                    //},
-                    //new object[] { "Safari", 8.5 },
-                    //new object[] { "Opera", 6.2 },
-                    //new object[] { "Others", 0.7 }
+                    new object[] { poll.OptionC, poll.AnswerC },
+                    new object[] { poll.OptionD, poll.AnswerD },
+                    //new object[] { poll.OptionE, poll.AnswerE },
+                    //new object[] { poll.OptionF, poll.AnswerF },
+                    //new object[] { poll.OptionG, poll.AnswerG },
+                    //new object[] { poll.OptionH, poll.AnswerH },
+                    //new object[] { poll.OptionI, poll.AnswerI },
+                    //new object[] { poll.OptionJ, poll.AnswerJ },
+               
                 })
             });
-            chart.SetTitle(new Title { Text = "MrWizards Chart" });
+            chart.SetTitle(new Title { Text = "Opinions" });
 
 
             //poll = db.Polls.Find(id);
@@ -319,267 +322,6 @@ namespace MultiPolls.Controllers
 
 
 
-
-
-
-//using System;
-//using System.Collections.Generic;
-//using System.Data;
-//using System.Data.Entity;
-//using System.Linq;
-//using System.Net;
-//using System.Web;
-//using System.Web.Mvc;
-//using MultiPolls.Models;
-//using DotNet.Highcharts.Options;
-//using DotNet.Highcharts.Helpers;
-//using System.Drawing;
-//using DotNet.Highcharts.Enums;
-
-//namespace MultiPolls.Controllers
-//{
-//    public class PollsController : Controller
-//    {
-//        private PollDBContext db = new PollDBContext();
-
-//        // GET: /Polls/
-//        public ActionResult Index()
-//        {
-//            return View(db.Polls.ToList());
-//        }
-
-//        // GET: /Polls/Details/5
-//        public ActionResult Details(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-//            }
-//            Poll poll = db.Polls.Find(id);
-//            if (poll == null)
-//            {
-//                return HttpNotFound();
-//            }
-//            return View(poll);
-//        }
-
-//        // GET: /Polls/Create
-//        [Authorize]
-//        public ActionResult Create()
-//        {
-//            return View();
-//        }
-
-//        // POST: /Polls/Create
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Create([Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ")] Poll poll)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                //var Email = "johnkotze@live.co.uk";
-
-//                var id = "cecaf855-199a-410f-93cc-0cd570601bba";
-//                var user = db.Users.Find(id);
-//                poll.CreatorID = user.Email;
-
-//                poll.CreationDate = DateTime.Now;
-//                poll.EditDate = DateTime.Now;
-              
-//                //db.Users.Find(Id)
-//                db.Polls.Add(poll);
-//                db.SaveChanges();
-//                return RedirectToAction("/Index");
-//            }
-//            return View(poll);
-//        }
-
-//        // GET: /Polls/Edit/5
-//        public ActionResult Edit(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-//            }
-//            Poll poll = db.Polls.Find(id);
-//            if (poll == null)
-//            {
-//                return HttpNotFound();
-//            }
-//            return View(poll);
-//        }
-
-//        // POST: /Polls/Edit/5
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Edit([Bind(Include="ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ")] Poll poll)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                db.Entry(poll).State = EntityState.Modified;
-//                db.SaveChanges();
-//                return RedirectToAction("/Index");
-//            }
-//            return View(poll);
-//        }
-
-//        // GET: /Polls/Delete/5
-//        public ActionResult Delete(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-//            }
-//            Poll poll = db.Polls.Find(id);
-//            if (poll == null)
-//            {
-//                return HttpNotFound();
-//            }
-//            return View(poll);
-//        }
-
-//        // POST: /Polls/Delete/5
-//        [HttpPost, ActionName("Delete")]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult DeleteConfirmed(int id)
-//        {
-//            Poll poll = db.Polls.Find(id);
-//            db.Polls.Remove(poll);
-//            db.SaveChanges();
-//            return RedirectToAction("/Polls/Index");
-//        }
-
-//        protected override void Dispose(bool disposing)
-//        {
-//            if (disposing)
-//            {
-//                db.Dispose();
-//            }
-//            base.Dispose(disposing);
-//        }
-
-//        // GET: /Polls/PublishedPolls
-//        public ActionResult PublishedPolls()
-//        {
-//            return View(db.Polls.ToList());
-//        }
-
-//        // GET: /Polls/Vote
-//        public ActionResult Vote(int? id)
-//        {
-//            if (id == null)
-//            {
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-//            }
-//            Poll poll = db.Polls.Find(id);
-//            if (poll == null)
-//            {
-//                return HttpNotFound();
-//            }
-//            return View(poll);
-//        }
-
-//        // POST: /Polls/Vote/4
-//        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-//        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public ActionResult Vote(int? id, string Option, [Bind(Include = "ID,CreationDate,EditDate,CreatorID,PollQuestion,OptionA,OptionB,OptionC,OptionD,OptionE,OptionF,OptionG,OptionH,OptionI,OptionJ")] Poll poll)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                //for (char c1 = 'A'; c1 <= 'J'; c1++)
-//                //{
-
-//                if (Option == "A")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerA = poll.AnswerA + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "B")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerB = poll.AnswerB + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "C")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerC = poll.AnswerC + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "D")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerD = poll.AnswerD + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "E")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerE = poll.AnswerE + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "F")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerF = poll.AnswerF + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "G")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerG = poll.AnswerG + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "H")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerH = poll.AnswerH + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "I")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerI = poll.AnswerI + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                else if (Option == "J")
-//                {
-//                    poll = db.Polls.Find(id);
-//                    poll.AnswerJ = poll.AnswerJ + 1;
-//                    db.SaveChanges();
-//                    return RedirectToAction("PollResults/" + id);
-//                }
-//                return RedirectToAction("PollResults/" + id);
-//            }
-//            return View(poll);
-//        }
-
-//        // GET: /Polls/PollResults
-//        public ActionResult PollResults(int? id, Poll poll)
-//        {
-            
-//            if (id == null)
-//            {
-//                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-//            }
-
-//            poll = db.Polls.Find(id);
 
 //            DotNet.Highcharts.Highcharts chart = new DotNet.Highcharts.Highcharts("chart");
 

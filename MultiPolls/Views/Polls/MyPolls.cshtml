@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="jumbotron jumbot">
     <h3>
         My Polls
@@ -23,7 +24,7 @@
         </tr>
         @foreach (var item in Model)
         {
-            if (item.CreatorID == User.Identity.Name && item.IsPublished == true)
+            if (item.IsPublished == true)
             {
                 if (item.HasVoted == false)
                 {
@@ -65,7 +66,7 @@
                     </tr>
                 }
             }
-            else if (item.CreatorID == User.Identity.Name && item.IsPublished == false)
+            else if (item.IsPublished == false)
             {
                 <tr>
                     <td>

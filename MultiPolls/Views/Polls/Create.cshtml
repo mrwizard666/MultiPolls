@@ -114,33 +114,22 @@
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.OptionJ, new { @class = "control-label col-md-3 hid" })
-            <div id="add-option" class="left-pad col-md-9">
+  
+            @*@Html.LabelFor(model => model.OptionJ, new { @class = "control-label col-md-3 hid" })*@
+            <div id="add-option" class="left-pad6 col-md-9">
                 Type to add another option
-            </div>
         </div>
-        <div class="form-group">
-            <div class="left-pad2 col-md-offset-2 col-md-3">
-                <div class="classWithPad">
-                    <input type="submit" value="Create" class="push_button" />
-                </div>
-            </div>
-            <div class="left-pad3 col-md-2">
-                <div class="classWithPad">
-                    <a href="/Home/Index" class="push_button">
-                        Cancel
-                    </a>
-                </div>
-            </div>
-            <div class="hid left-pad3  col-md-4">
-                <div class="classWithPad">
-                    <a href="/Home/Index" class="push_button">
-                        Hide
-                    </a>
-                </div>
-            </div>
-        </div>
+        <ul class="classWithPad left-pad7">
+            <li class="nav-display-inline">
+                <input type="submit" value="Create" class="push_button" />
+            </li>
+            <li class="nav-display-inline classWithPad">
+
+                <a href="/Polls/MyPolls" class="push_button">
+                    Cancel
+                </a>
+            </li>
+        </ul>
     </div>
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")

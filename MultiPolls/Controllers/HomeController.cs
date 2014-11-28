@@ -12,10 +12,6 @@ namespace MultiPolls.Controllers
         {
             return View();
         }
-        [Authorize]
-        public ActionResult LoginHome()
-        {
-            return View();
-        }
+       
     }
 }

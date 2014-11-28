@@ -103,6 +103,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Mvc.Mailer">
+      <HintPath>..\packages\MvcMailer-vs2013.4.5.1-pre\lib\45\Mvc.Mailer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -184,6 +187,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mailers\IUserMailer.cs" />
+    <Compile Include="Mailers\UserMailer.cs" />
     <Compile Include="Migrations\201411111846298_InitialCreate.cs" />
     <Compile Include="Migrations\201411111846298_InitialCreate.Designer.cs">
       <DependentUpon>201411111846298_InitialCreate.cs</DependentUpon>
@@ -300,6 +305,14 @@
     <Compile Include="Migrations\201411271038460_adddatefix.Designer.cs">
       <DependentUpon>201411271038460_adddatefix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411272121116_modelfix.cs" />
+    <Compile Include="Migrations\201411272121116_modelfix.Designer.cs">
+      <DependentUpon>201411272121116_modelfix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411280741543_model.cs" />
+    <Compile Include="Migrations\201411280741543_model.Designer.cs">
+      <DependentUpon>201411280741543_model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -314,18 +327,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\jquery.jqplot.css" />
-    <Content Include="Content\jquery.jqplot.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Resources\CreatePoll.png" />
     <Content Include="Resources\LogoHeader.png" />
+    <Content Include="Resources\managepolls.PNG" />
     <Content Include="Resources\MyPolls.png" />
     <Content Include="Resources\Pie.png" />
     <Content Include="Resources\PublicPolls.png" />
+    <Content Include="Resources\results.PNG" />
     <Content Include="Resources\Room.png" />
+    <Content Include="Resources\signup.PNG" />
+    <Content Include="Resources\vote.PNG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Highcharts-4.0.1\js\adapters\standalone-framework.js" />
@@ -414,10 +429,8 @@
     <Content Include="Views\Shared\_LoginBarPartial.cshtml" />
     <Content Include="Views\Polls\Create.cshtml" />
     <Content Include="Views\Polls\Delete.cshtml" />
-    <Content Include="Views\Polls\Details.cshtml" />
     <Content Include="Views\Polls\Edit.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
-    <Content Include="Views\Polls\PublishedPolls.cshtml" />
     <Content Include="Views\Polls\Vote.cshtml" />
     <Content Include="Views\Polls\PollResults.cshtml" />
     <Content Include="Views\Account\_LoginPartial.cshtml" />
@@ -431,6 +444,9 @@
     <Content Include="Views\VoteLog\Edit.cshtml" />
     <Content Include="Views\VoteLog\Index.cshtml" />
     <Content Include="Views\VoteLog\_VotePartial.cshtml" />
+    <Content Include="Views\UserMailer\_Layout.cshtml" />
+    <Content Include="Views\UserMailer\Welcome.cshtml" />
+    <Content Include="Views\UserMailer\PasswordReset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -526,6 +542,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411271038460_adddatefix.resx">
       <DependentUpon>201411271038460_adddatefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411272121116_modelfix.resx">
+      <DependentUpon>201411272121116_modelfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411280741543_model.resx">
+      <DependentUpon>201411280741543_model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
